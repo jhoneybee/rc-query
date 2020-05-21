@@ -4,12 +4,12 @@ import { PixiCanvas } from '../canvas/PixiCanvas'
 import { Brush } from '../canvas/utils/Brush'
 import { Query, QueryBuildProps, Position } from '../interface'
 
-const loops = (querys: Query[], position: Position, callback: (element: Query, position: Position) => void) => {
-    querys.forEach((query) => {
+const loops = (querys: Query[], level: number, callback: (element: Query, level: number, index: number) => void) => {
+    querys.forEach((query, index) => {
+        callback(query, level, index)
         if (query.children && query.children.length > 0) {
-            loops(query.children, position, callback)
+            loops(query.children, level, callback)
         }
-        callback(query, position)
     })
 }
 
@@ -39,19 +39,19 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
 
     const elements: JSX.Element[] = []
 
-    loops(props.querys!, {x , y}, (element, position) => {
+    loops(props.querys!, 0 , (element, level, index) => {
         let startPosition: Position = {
             x,
             y: y + 7
         }
-        if(position.x !== x && position.y !== y){
-            startPosition.x = position.x + (getQuerySize(element).width / 2)
-            startPosition.y = position.y + ( getQuerySize(element).height / 2)
+        if(level > 1){
+            startPosition.x = x + (props.space!.width * level) + (getQuerySize(element).width / 2)
+            startPosition.y = y + (props.space!.height * level) + (getQuerySize(element).height / 2)
 
         }
         let endPosition: Position = {
-            x: startPosition.x +  props.space!.width ,
-            y: startPosition.y +  props.space!.height + (getQuerySize(element).height / 2)
+            x: startPosition.x +  props.space!.width +  (getQuerySize(element).width / 2) ,
+            y: startPosition.y +  props.space!.height + ((index + 1) *(getQuerySize(element).height))
         }
         
         app.stage.addChild(Brush.linkLine(startPosition, endPosition))
@@ -76,8 +76,7 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
                 />
             ))
         }
-        position.x = endPosition.x
-        position.y = endPosition.y
+        return {x: endPosition.x, y:  endPosition.y}
     })
     return elements
 }

@@ -32,34 +32,20 @@ export default () => {
                                 <Input />
                             </div>
                         )
-                    },
-                        children: [{
-                        id: '0-0',
-                        type: 'AND',
-                        record: {},
-                        render: (props) => {
-                            return (
-                                <div
-                                    style={props.style}
-                                >
-                                    <Input />
-                                </div>
-                            )
-                        }
-                    },{
-                        id: '0-1',
-                        type: 'AND',
-                        record: {},
-                        render: (props) => {
-                            return (
-                                <div
-                                    style={props.style}
-                                >
-                                   <Input />
-                                </div>
-                            )
-                        }
-                    }]
+                    }
+                },{
+                    id: '0',
+                    type: 'AND',
+                    record: {},
+                    render: (props) => {
+                        return (
+                            <div
+                                style={props.style}
+                            >
+                                <Input />
+                            </div>
+                        )
+                    }
                 }])
             }}> click </button>
             <QueryBuild querys={querys} rightClick={(position) => { alert(JSON.stringify(position))}} />

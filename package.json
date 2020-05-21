@@ -1,6 +1,6 @@
 {
   "name": "rc-query",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -15,6 +15,11 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*"
+  ],
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
       "prettier --write"
