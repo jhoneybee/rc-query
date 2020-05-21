@@ -34,7 +34,7 @@ export interface QueryBuildProps {
         height: number,
         width: number
     },
-    
+    rightClick?: (position: Position, query?: Query | undefined ) => void 
 }
 
 /**

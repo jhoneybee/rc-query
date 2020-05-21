@@ -62,7 +62,7 @@ export default () => {
                     }]
                 }])
             }}> click </button>
-            <QueryBuild querys={querys} />
+            <QueryBuild querys={querys} rightClick={(position) => { alert(JSON.stringify(position))}} />
         </>
     )
 };

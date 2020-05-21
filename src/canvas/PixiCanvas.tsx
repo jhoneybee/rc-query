@@ -22,5 +22,5 @@ export const PixiCanvas = (props: PixiCanvasProps) => {
             }
         }
     }, [])
-    return <div {...restProps} ref={domRef} style={{position: 'relative'}} />
+    return <div {...restProps} ref={domRef} style={{position: 'relative'}} onContextMenu={(e)=>{ e.preventDefault();}}/>
 }

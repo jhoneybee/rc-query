@@ -28,6 +28,10 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
     app.stage.addChild(Brush.round({
         x,
         y
+    }, () => {
+        if(props.rightClick){
+            props.rightClick({x,y})
+        }
     }))
     
     app.stage.addChild(startRound)
@@ -36,7 +40,6 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
     const elements: JSX.Element[] = []
 
     loops(props.querys!, {x , y}, (element, position) => {
-        debugger
         let startPosition: Position = {
             x,
             y: y + 7
