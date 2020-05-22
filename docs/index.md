@@ -25,7 +25,7 @@ export default () => {
                     width: 120,
                     margin: {
                         x: 50,
-                        y: 50
+                        y: 15
                     },
                     height: 32,
                     render: (props) => {
@@ -37,13 +37,13 @@ export default () => {
                             </div>
                         )
                     },
-                    children: [{
+                     children: [{
                         key: '0-0',
                         width: 120,
                         height: 32,
                         margin: {
                             x: 50,
-                            y: 50
+                            y: 15
                         },
                         render: (props) => {
                             return (
@@ -60,7 +60,7 @@ export default () => {
                         height: 32,
                         margin: {
                             x: 50,
-                            y: 50
+                            y: 15
                         },
                         render: (props) => {
                             return (
@@ -71,14 +71,31 @@ export default () => {
                                 </div>
                             )
                         },
-                    }]
+                    },{
+                        key: '0-2',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                  <Input />
+                                </div>
+                            )
+                        },
+                    }] 
                 },{
                     key: '1',
                     width: 120,
                     height: 32,
                     margin: {
                         x: 50,
-                        y: 50
+                        y: 15
                     },
                     render: (props) => {
                         return (
@@ -89,13 +106,13 @@ export default () => {
                             </div>
                         )
                     },
-                    children: [{
+                   children: [{
                         key: '1-0',
                         width: 120,
                         height: 32,
                         margin: {
                             x: 50,
-                            y: 50
+                            y: 15
                         },
                         render: (props) => {
                             return (
@@ -107,6 +124,60 @@ export default () => {
                             )
                         },
                     }]
+                },{
+                    key: '2',
+                    width: 120,
+                    margin: {
+                        x: 50,
+                        y: 15
+                    },
+                    height: 32,
+                    render: (props) => {
+                        return (
+                            <div
+                                style={props.style}
+                            >
+                              <Input />
+                            </div>
+                        )
+                    },
+                    children: []
+                },{
+                    key: '3',
+                    width: 120,
+                    margin: {
+                        x: 50,
+                        y: 15
+                    },
+                    height: 32,
+                    render: (props) => {
+                        return (
+                            <div
+                                style={props.style}
+                            >
+                              <Input />
+                            </div>
+                        )
+                    },
+                    children: []
+                },{
+                    key: '4',
+                    width: 120,
+                    margin: {
+                        x: 50,
+                        y: 15
+                    },
+                    height: 32,
+                    render: (props) => {
+                        return (
+                            <div
+                                style={props.style}
+                            >
+                              <Input />
+                            </div>
+                        )
+                    },
+                    children: []
                 }])
             }}> click </button>
             <QueryBuild querys={querys} rightClick={(position) => { alert(JSON.stringify(position))}} />

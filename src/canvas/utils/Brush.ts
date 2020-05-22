@@ -13,7 +13,7 @@ const linkLine = (start: Position, end: Position) => {
     return  graphics
 }
 
-let number = 0 
+
 // 绘制一个圆形
 const round = (position: Position, rightClick?: (position: Position) => void) => {
     var graphics = new PIXI.Graphics();
