@@ -123,6 +123,40 @@ export default () => {
                                 </div>
                             )
                         },
+                    },{
+                        key: '1-1',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
+                    },{
+                        key: '1-2',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
                     }]
                 },{
                     key: '2',
@@ -141,7 +175,58 @@ export default () => {
                             </div>
                         )
                     },
-                    children: []
+                    children: [{
+                        key: '2-0',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
+                    },{
+                        key: '2-1',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
+                    },{
+                        key: '2-2',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 15
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
+                    }]
                 },{
                     key: '3',
                     width: 120,
