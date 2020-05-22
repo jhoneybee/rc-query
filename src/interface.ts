@@ -9,31 +9,44 @@ export interface PixiCanvasProps extends React.HTMLAttributes<HTMLDivElement> {
 
 
 export interface Query {
-    // 唯一ID
-    id: string
-    // 数据类型
-    type: 'AND' | 'OR' | 'NORMAL'
-    // 当前的坐标位置
-    position: Position,
-    // 保存的数据
-    record: any,
-    // 子节点信息
-    children: Query[],
-    // 组件的宽度
-    width?: number,
-    // 组件的高度
-    height?: number,
-    // 渲染dom节点
+    /**
+     * 组件唯一的key
+     */
+    key: string,
+    
+    /**
+     * 组件的宽度
+     */
+    width: number,
+    
+    /**
+     * 组件的高度
+     */
+    height: number,
+
+    /**
+     * 子节点信息
+     */
+    children: Query[]
+
+    /**
+     * 外边距
+     */
+    margin?: Position
+    /**
+     * 组件的坐标信息
+     */
+    position?: Position
+
+    /**
+     * 渲染的组件节点信息
+     */
     render: React.ComponentType<React.HTMLAttributes<HTMLDivElement>>
 }
 
 
 export interface QueryBuildProps {
     querys?: Query[],
-    space?: {
-        height: number,
-        width: number
-    },
     rightClick?: (position: Position, query?: Query | undefined ) => void 
 }
 

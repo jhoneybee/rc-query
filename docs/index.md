@@ -21,31 +21,92 @@ export default () => {
         <>
             <button onClick={()=>{
                 setQuerys([{
-                    id: '0',
-                    type: 'AND',
-                    record: {},
+                    key: '0',
+                    width: 120,
+                    margin: {
+                        x: 50,
+                        y: 50
+                    },
+                    height: 32,
                     render: (props) => {
                         return (
                             <div
                                 style={props.style}
                             >
-                                <Input />
+                              <Input />
                             </div>
                         )
-                    }
+                    },
+                    children: [{
+                        key: '0-0',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 50
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                    <Input />
+                                </div>
+                            )
+                        },
+                    },{
+                        key: '0-1',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 50
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                  <Input />
+                                </div>
+                            )
+                        },
+                    }]
                 },{
-                    id: '0',
-                    type: 'AND',
-                    record: {},
+                    key: '1',
+                    width: 120,
+                    height: 32,
+                    margin: {
+                        x: 50,
+                        y: 50
+                    },
                     render: (props) => {
                         return (
                             <div
                                 style={props.style}
                             >
-                                <Input />
+                              <Input />
                             </div>
                         )
-                    }
+                    },
+                    children: [{
+                        key: '1-0',
+                        width: 120,
+                        height: 32,
+                        margin: {
+                            x: 50,
+                            y: 50
+                        },
+                        render: (props) => {
+                            return (
+                                <div
+                                    style={props.style}
+                                >
+                                     <Input />
+                                </div>
+                            )
+                        },
+                    }]
                 }])
             }}> click </button>
             <QueryBuild querys={querys} rightClick={(position) => { alert(JSON.stringify(position))}} />

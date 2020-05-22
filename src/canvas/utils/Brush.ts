@@ -13,13 +13,14 @@ const linkLine = (start: Position, end: Position) => {
     return  graphics
 }
 
+let number = 0 
 // 绘制一个圆形
 const round = (position: Position, rightClick?: (position: Position) => void) => {
     var graphics = new PIXI.Graphics();
     graphics.beginFill()
     graphics.lineStyle(1, 0x1e1f26); 
     graphics.beginFill(0x1890ff, 1);
-    graphics.drawCircle(position.x, position.y, 6);
+    graphics.drawCircle(position.x, position.y, 10);
     graphics.interactive = true;
     graphics.on('rightclick',() => {
         if(rightClick){

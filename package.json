@@ -1,6 +1,6 @@
 {
   "name": "rc-query",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -29,19 +29,19 @@
     ]
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "pixi.js": "^5.2.4",
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/lodash.debounce": "^4.0.6",
+    "antd": "3.26.17",
+    "yorkie": "^2.0.0",
+    "prettier": "^1.19.1",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.0.5",
     "dumi": "^1.0.6",
     "father-build": "^1.17.2",
-    "lint-staged": "^10.0.7",
-    "lodash.debounce": "^4.0.8",
-    "pixi.js": "^5.2.4",
-    "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "yorkie": "^2.0.0"
-  },
-  "devDependencies": {
-    "@types/lodash.debounce": "^4.0.6",
-    "antd": "3.26.17"
+    "lint-staged": "^10.0.7"
   }
 }
