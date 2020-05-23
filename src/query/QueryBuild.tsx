@@ -14,7 +14,7 @@ const loopsTotalHeight = (querys: Query[], totalHeight: number) => {
             const margin = element.margin || { x: 0 , y: 0}
             tempTotalHeight += element.height + margin.y
             if(element.children && element.children.length > 0){
-                tempTotalHeight += loopsTotalHeight(element.children, tempTotalHeight)
+                tempTotalHeight = loopsTotalHeight(element.children, tempTotalHeight)
             }
         })
     }
@@ -88,6 +88,9 @@ const draw = (app: PIXI.Application, props: QueryBuildProps) => {
         x,
         y
     }, 200,(query, start, end)=>{
+        
+        app.view.width = app.view.width > end.x + 100 ? app.view.width : end.x + 20
+        app.view.height = app.view.height > end.y + 100 ? app.view.height : end.y + 20
         app.stage.addChild(Brush.linkLine(start, end))
         if(query.render){
             const DynamicComponent = query.render
@@ -125,7 +128,10 @@ export const QueryBuild = (props: QueryBuildProps) => {
         <>
             <PixiCanvas
                 onStart={(tempApp) => {
+                    tempApp.view.width = 40 + 100
+                    tempApp.view.height = 20 + 100
                     app.current = tempApp
+                    
                 }}
             >
                 {components}
