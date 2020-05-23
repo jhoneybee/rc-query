@@ -5,6 +5,22 @@ import { Brush } from '../canvas/utils/Brush'
 import { Query, QueryBuildProps, Position } from '../interface'
 
 
+
+// 计算子节点中所有的高度信息
+const loopsTotalHeight = (querys: Query[], totalHeight: number) => {
+    let tempTotalHeight = 0;
+    if(querys && querys.length > 0){
+        querys.forEach((element) =>{
+            const margin = element.margin || { x: 0 , y: 0}
+            tempTotalHeight += element.height + margin.y
+            if(element.children && element.children.length > 0){
+                tempTotalHeight += loopsTotalHeight(element.children, tempTotalHeight)
+            }
+        })
+    }
+    return tempTotalHeight + totalHeight;
+}
+ 
 /**
  * 将Query信息初始化对应的坐标信息
  * @param querys 当前初始化的query信息
@@ -23,13 +39,8 @@ const loops = (
         // 外边距
         const margin = query.margin || { x: 0 , y: 0}
         
-        // 所有子节点的共同高度
-        let totalHeight = 0
-        if(query.children && query.children.length > 0){
-            query.children.forEach((element) => {
-                totalHeight += element.height + margin.y
-            })
-        }
+        // 所有子节点的共同高度 - 没有加上子节点的子节点的高度
+        let totalHeight = loopsTotalHeight(query.children!, 0)
         
         // 结束节点
         const endNode = {

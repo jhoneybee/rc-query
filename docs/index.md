@@ -45,6 +45,58 @@ export default () => {
                             x: 50,
                             y: 15
                         },
+                        children: [{
+                            key: '0-0-1',
+                            width: 120,
+                            height: 32,
+                            margin: {
+                                x: 50,
+                                y: 15
+                            },
+                            render: (props) => {
+                                return (
+                                    <div
+                                        style={props.style}
+                                    >
+                                    <Input />
+                                    </div>
+                                )
+                            },
+                        },{
+                            key: '0-0-2',
+                            width: 120,
+                            height: 32,
+                            margin: {
+                                x: 50,
+                                y: 15
+                            },
+                            render: (props) => {
+                                return (
+                                    <div
+                                        style={props.style}
+                                    >
+                                    <Input />
+                                    </div>
+                                )
+                            },
+                        },{
+                            key: '0-0-3',
+                            width: 120,
+                            height: 32,
+                            margin: {
+                                x: 50,
+                                y: 15
+                            },
+                            render: (props) => {
+                                return (
+                                    <div
+                                        style={props.style}
+                                    >
+                                    <Input />
+                                    </div>
+                                )
+                            },
+                        }],
                         render: (props) => {
                             return (
                                 <div
