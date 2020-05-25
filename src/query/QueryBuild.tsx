@@ -64,7 +64,7 @@ const loops = (
     })
 }
 
-const draw = (app: PIXI.Application, props: QueryBuildProps) => {
+const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
     app.stage.children.forEach((element, index) => {
         app.stage.removeChildren(index)
     })
@@ -78,7 +78,10 @@ const draw = (app: PIXI.Application, props: QueryBuildProps) => {
         y
     }, () => {
         if(props.rightClick){
-            props.rightClick({x,y})
+            props.rightClick({
+                x: dom.clientLeft + x,
+                y: dom.clientTop + y
+            })
         }
     }))
 
@@ -119,19 +122,20 @@ const draw = (app: PIXI.Application, props: QueryBuildProps) => {
 
 export const QueryBuild = (props: QueryBuildProps) => {
     const app = React.useRef<PIXI.Application>();
+    const dom = React.useRef<Element>();
     const [components, setComponents] = useState<JSX.Element[]>([])
     useEffect(() => {
-        const components = draw(app.current!, props)
+        const components = draw(app.current!, dom.current!, props)
         setComponents(components)
     }, [props.querys])
     return (
         <>
             <PixiCanvas
-                onStart={(tempApp) => {
+                onStart={(tempApp, tempDom) => {
                     tempApp.view.width = 40 + 100
                     tempApp.view.height = 20 + 100
-                    app.current = tempApp
-                    
+                    dom.current = tempDom
+                    app.current = tempApp 
                 }}
             >
                 {components}
