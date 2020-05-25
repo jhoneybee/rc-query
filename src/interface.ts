@@ -39,6 +39,11 @@ export interface Query {
     position?: Position
 
     /**
+     * 存放的其他数据
+     */
+    dataRef?: any
+
+    /**
      * 渲染的组件节点信息
      */
     render: React.ComponentType<React.HTMLAttributes<HTMLDivElement>>
