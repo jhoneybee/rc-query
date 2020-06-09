@@ -1,6 +1,6 @@
 {
   "name": "rc-query",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

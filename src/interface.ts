@@ -4,7 +4,7 @@ export interface PixiCanvasProps extends React.HTMLAttributes<HTMLDivElement> {
     /**
      * 画布初始化完成
      */
-    onStart?: (app: PIXI.Application, dom: Element) => void
+    onStart?: (app: PIXI.Application, dom: HTMLDivElement) => void
 }
 
 
@@ -51,8 +51,12 @@ export interface Query {
 
 
 export interface QueryBuildProps {
-    querys?: Query[],
+    querys?: Query[]
     rightClick?: (position: Position, query?: Query | undefined ) => void 
+    /**
+     * 线条的宽度
+     */
+    lineWidth?: number
 }
 
 /**

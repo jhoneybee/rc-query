@@ -64,7 +64,7 @@ const loops = (
     })
 }
 
-const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
+const draw = (app: PIXI.Application, dom: HTMLDivElement, props: QueryBuildProps) => {
     app.stage.children.forEach((element, index) => {
         app.stage.removeChildren(index)
     })
@@ -79,8 +79,8 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
     }, () => {
         if(props.rightClick){
             props.rightClick({
-                x: dom.clientLeft + x,
-                y: dom.clientTop + y
+                x: dom.offsetLeft + x,
+                y: dom.offsetLeft + y
             })
         }
     }))
@@ -90,7 +90,7 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
     loops(props.querys!, {
         x,
         y
-    }, 200,(query, start, end)=>{
+    }, props.lineWidth || 100,(query, start, end)=>{
         
         app.view.width = app.view.width > end.x + 100 ? app.view.width : end.x + 20
         app.view.height = app.view.height > end.y + 100 ? app.view.height : end.y + 20
@@ -122,7 +122,7 @@ const draw = (app: PIXI.Application, dom: Element, props: QueryBuildProps) => {
 
 export const QueryBuild = (props: QueryBuildProps) => {
     const app = React.useRef<PIXI.Application>();
-    const dom = React.useRef<Element>();
+    const dom = React.useRef<HTMLDivElement>();
     const [components, setComponents] = useState<JSX.Element[]>([])
     useEffect(() => {
         const components = draw(app.current!, dom.current!, props)
