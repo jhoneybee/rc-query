@@ -64,26 +64,27 @@ const loops = (
     })
 }
 
+const x = 40;
+const y = 20;
+
 const draw = (app: PIXI.Application, dom: HTMLDivElement, props: QueryBuildProps) => {
     app.stage.children.forEach((element, index) => {
         app.stage.removeChildren(index)
     })
-    const x = 40;
-    const y = 20;
     const startRound = new PIXI.Graphics()
 
     // 添加一个原点为起始点
-    app.stage.addChild(Brush.round({
-        x,
-        y
-    }, () => {
-        if(props.rightClick){
-            props.rightClick({
-                x: dom.offsetLeft + x,
-                y: dom.offsetLeft + y
-            })
-        }
-    }))
+    // app.stage.addChild(Brush.round({
+    //     x,
+    //     y
+    // }, () => {
+    //     if(props.rightClick){
+    //         props.rightClick({
+    //             x: dom.left + x,
+    //             y: dom.offsetLeft + y
+    //         })
+    //     }
+    // }))
 
     app.stage.addChild(startRound)
     const components: JSX.Element[] = []
@@ -106,7 +107,7 @@ const draw = (app: PIXI.Application, dom: HTMLDivElement, props: QueryBuildProps
                         top: end.y - (query.height / 2),
                         float: 'left',
                         //background: '#1e1f26',
-                        zIndex: 1000,
+                        zIndex: 100,
                         width: query.width,
                         height: query.height
                     }}
@@ -129,7 +130,11 @@ export const QueryBuild = (props: QueryBuildProps) => {
         setComponents(components)
     }, [props.querys])
     return (
-        <>
+        <div
+            style={{
+                backgroundColor: 'white'
+            }}
+        >
             <PixiCanvas
                 onStart={(tempApp, tempDom) => {
                     tempApp.view.width = 40 + 100
@@ -138,9 +143,36 @@ export const QueryBuild = (props: QueryBuildProps) => {
                     app.current = tempApp 
                 }}
             >
+                <div
+                    style={{
+                        width: 20,
+                        height: 20,
+                        left: x - 10,
+                        right: y,
+                        position: 'absolute',
+                        zIndex: 100,
+                        backgroundColor: '#1890ff',
+                        border: '1px solid #000',
+                        borderRadius: '50%'
+                    }}
+                    onContextMenu={(e) => {
+                        if(props.rightClick){
+                            props.rightClick({
+                                x: e.clientX,
+                                y: e.clientY
+                            })
+                        }
+                    }}
+                />
                 {components}
             </PixiCanvas>
-        </>
+            <div style={{
+                backgroundColor: 'white',
+                color: 'white'
+            }}>
+             ... . ...- . -. .- - -....- .-.. . .- ... - -....- ..-. --- .-. -....- .- -....- -- --- -- . -. - -....- .. -....- .-.. .. -.- . -.. -....- -.-- --- ..- .-.-.- -....- -... ..- - .-.-.- .-.-.- .-.-.- .-.-.- .-.-.- -....- 
+            </div>
+        </div>
     )
 }
 
