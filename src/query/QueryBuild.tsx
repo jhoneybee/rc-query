@@ -130,11 +130,7 @@ export const QueryBuild = (props: QueryBuildProps) => {
         setComponents(components)
     }, [props.querys])
     return (
-        <div
-            style={{
-                backgroundColor: 'white'
-            }}
-        >
+        <>
             <PixiCanvas
                 onStart={(tempApp, tempDom) => {
                     tempApp.view.width = 40 + 100
@@ -166,13 +162,7 @@ export const QueryBuild = (props: QueryBuildProps) => {
                 />
                 {components}
             </PixiCanvas>
-            <div style={{
-                backgroundColor: 'white',
-                color: 'white'
-            }}>
-             ... . ...- . -. .- - -....- .-.. . .- ... - -....- ..-. --- .-. -....- .- -....- -- --- -- . -. - -....- .. -....- .-.. .. -.- . -.. -....- -.-- --- ..- .-.-.- -....- -... ..- - .-.-.- .-.-.- .-.-.- .-.-.- .-.-.- -....- 
-            </div>
-        </div>
+        </>
     )
 }
 
